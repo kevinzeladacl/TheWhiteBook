@@ -1,7 +1,22 @@
-# DAPI 2.1.0
-Base of API Rest with DjangoRestFramework + TokenAuthentication + ContentManagerWeb
+# MIDETOOL - DAPI 2.1.0
 
-URL DOCS POSTMAN: [API DOCUMENTATION]()
+MIDETOOL is a project to develop a platform for writers with many useful functions, for example:
+
+ - Profile of character (Principals characters, secondaries, extras,   
+   etc)     
+   
+ - Profile of Places 
+ 
+You can Upload pictures, files, and another  info for you creative process asociated to each project or mark this resources how global resources for many projects. And more...
+
+ROADMAP
+  [ x ] Create Project
+  [ ] Project Base
+  [ ]  Models
+  [ ] Login
+  [ ] Text Editor
+
+
 
 
 ## Getting Started
