@@ -9,15 +9,6 @@ MIDETOOL is a project to develop a platform for writers with many useful functio
  
 You can Upload pictures, files, and another  info for you creative process asociated to each project or mark this resources how global resources for many projects. And more...
 
-ROADMAP
-  [ x ] Create Project
-  [ ] Project Base
-  [ ]  Models
-  [ ] Login
-  [ ] Text Editor
-
-
-
 
 ## Getting Started
 
