@@ -1,13 +1,23 @@
 # MIDETOOL - DAPI 2.1.0
 
-MIDETOOL is a project to develop a platform for writers with many useful functions, for example:
-
- - Profile of character (Principals characters, secondaries, extras,   
-   etc)     
-   
- - Profile of Places 
- 
+MIDETOOL is a project to develop a platform for writers with many useful function	
 You can Upload pictures, files, and another  info for you creative process asociated to each project or mark this resources how global resources for many projects. And more...
+
+
+
+**ROADMAP**  
+
+ - [ ] Home
+ - [ ] Register
+ - [ ] Login
+ - [ ] Dashboard
+ - [ ] Create Project
+ - [ ] Create Chapters
+ - [ ] Create Characters
+ - [ ] Create Places
+ - [ ] Create Resources
+ - [ ] Release 1.0.0
+
 
 
 ## Getting Started
