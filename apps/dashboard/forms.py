@@ -3,7 +3,7 @@ from apps.users.models import *
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=30,
+    email = forms.CharField(max_length=30,
        widget=forms.TextInput(attrs={
            'class': 'form-control',
            'placeholder':"Ingresa tu Correo",

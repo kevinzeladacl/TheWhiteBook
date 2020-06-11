@@ -35,7 +35,7 @@ def loginDashboard(request):
         if 'login_form' in request.POST:
             login_form = LoginForm(request.POST)
             if login_form.is_valid():
-                user = authenticate(username=login_form.cleaned_data['username'], password=login_form.cleaned_data['password'])
+                user = authenticate(email=login_form.cleaned_data['email'], password=login_form.cleaned_data['password'])
                 if user is not None:
                     try:
                         if user.is_active:
