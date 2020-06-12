@@ -55,6 +55,36 @@ def loginDashboard(request):
             login_form = LoginForm()
             return render(request, 'loginUser.html', {'login_form': login_form})
 
+def registerDashboard(request):
+    if request.user.is_authenticated:
+        return redirect('indexWebsite')
+    else:
+        if request.method == "POST":
+            if 'register_form' in request.POST:
+                user_register = RegisterForm(request.POST)
+                if user_register.is_valid():
+                    User.objects.create_user(
+                        email=user_register.cleaned_data['email'],
+                        password=user_register.cleaned_data['password'],
+                    )
+                    user = authenticate(email=user_register.cleaned_data['email'], password=user_register.cleaned_data['password'])
+                    if user is not None:
+                        try:
+                            if user.is_active:
+                                login(request, user)
+                                return redirect('indexDashboard')
+                        except:
+                            register_form = RegisterForm()
+                            dataErrorRegister = "Lo sentimos, su usuario no esta habilitado para ingresar al sistema"
+                            return render(request, 'registerUser.html', {'register_form': register_form, 'dataErrorRegister': dataErrorRegister})
+                else:
+                    register_form = RegisterForm()
+                    dataErrorRegister = "Lo sentimos ya existe una cuenta registrada con estos datos"
+                    return render(request, 'registerUser.html', {'register_form': register_form, 'dataErrorRegister': dataErrorRegister})
+        else:
+            register_form = RegisterForm()
+            return render(request, 'registerUser.html', {'register_form': register_form})
+
 def logoutDashboard(request):
     logout(request)
     return redirect('/')

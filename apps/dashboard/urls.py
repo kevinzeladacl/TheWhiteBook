@@ -10,8 +10,9 @@ urlpatterns = [
     #User
     path('', views.indexDashboard ,name="indexDashboard"),    
     path('login/', views.loginDashboard ,name="loginDashboard"),
+    path('register/', views.registerDashboard ,name="registerDashboard"),
     path('logout/', views.logoutDashboard ,name="logoutDashboard"),
-    # path('register/', views.registerDashboard ,name="registerDashboard"),
+
      
 
     #MODULE USERS

@@ -17,6 +17,21 @@ class LoginForm(forms.Form):
            'required': 'true'
        }))
 
+class RegisterForm(forms.Form):
+    email = forms.CharField(max_length=30,
+       widget=forms.TextInput(attrs={
+           'class': 'form-control',
+           'placeholder':"Ingresa tu Correo",
+           'required': 'true',
+       }))
+    password = forms.CharField(max_length=30,
+       widget=forms.TextInput(attrs={
+           'type': 'password',
+           'class': 'form-control',
+           'placeholder':"Ingresa tu Clave",
+           'required': 'true'
+       }))
+
 
 class updateUserForm(forms.ModelForm):
 
