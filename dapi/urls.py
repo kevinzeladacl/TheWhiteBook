@@ -9,6 +9,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     
 	#custom dapi
+	path('', include('apps.website.urls')),
 	path('api/v1/', include('apps.api.urls')),
 	path('dashboard/', include('apps.dashboard.urls')),
 	path('users/', include('apps.users.urls')),
