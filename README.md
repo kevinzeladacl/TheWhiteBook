@@ -7,9 +7,9 @@ You can Upload pictures, files, and another  info for you creative process asoci
 
 **ROADMAP**  
 
- - [ ] Home
- - [ ] Register
- - [ ] Login
+ - [✔] Home
+ - [✔] Register
+ - [✔] Login
  - [ ] Dashboard
  - [ ] Create Project
  - [ ] Create Chapters
@@ -41,7 +41,7 @@ A step by step series of examples that tell you have to get a development env ru
 #### Unix, Linux or OSX
 Say what the step will be
 ```
-git clone git@github.com:kevinzeladacl/dapi.git
+git clone git@github.com:kevinzeladacl/mide-tool.git
 ```
 Install virtualenv and run it
 ```
@@ -70,7 +70,7 @@ Select '999' option - Install Project
 
 Finally enter the following url in your browser
 ```
- http://127.0.0.1:8000
+ http://127.0.0.1:8009
 ```
  
  
@@ -85,7 +85,7 @@ Add additional notes about how to deploy this on a live system
 * Django Framework
 * Bootstrap
 
-And can see more in the following URL [requirements.txt](dapi/requirements.txt)
+And can see more in the following URL [requirements.txt](dapi/requirements/staging.txt)
 
  
 ## Versioning
