@@ -41,7 +41,7 @@ A step by step series of examples that tell you have to get a development env ru
 #### Unix, Linux or OSX
 Say what the step will be
 ```
-git clone git@github.com:kevinzeladacl/mide-tool.git
+git clone git@github.com:kevinzeladacl/midetool.git
 ```
 Install virtualenv and run it
 ```
