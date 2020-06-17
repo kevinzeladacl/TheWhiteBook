@@ -63,6 +63,14 @@ def registerDashboard(request):
             if 'register_form' in request.POST:
                 user_register = RegisterForm(request.POST)
                 if user_register.is_valid():
+                    p2 = request.POST["password2"]
+                    p1 = user_register.cleaned_data['password']
+
+                    if not p1 == p2:
+                        register_form = RegisterForm()
+                        dataErrorRegister = "Las contraseñas no coinciden"
+                        return render(request, 'registerUser.html', {'register_form': register_form, 'dataErrorRegister': dataErrorRegister})
+
                     User.objects.create_user(
                         email=user_register.cleaned_data['email'],
                         password=user_register.cleaned_data['password'],
