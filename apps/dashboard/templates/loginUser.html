@@ -1,7 +1,13 @@
 {% extends "baseUser.html" %}
 {% load static %}
 {% block bodycontent %}
-	
+	 {% if dataErrorLogin %}
+     <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-ban"></i> Ups!</h4>
+      {{dataErrorLogin}}
+    </div>
+   {% endif %}
     <div class="card-body login-card-body">
       <p class="login-box-msg">Ingresa tus credenciales para acceder</p>
 

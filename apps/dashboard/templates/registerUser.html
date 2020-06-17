@@ -2,7 +2,13 @@
 {% load static %}
 {% block bodycontent %}
 	
-   
+   {% if dataErrorRegister %}
+     <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-ban"></i> Ups!</h4>
+      {{dataErrorRegister}}
+    </div>
+   {% endif %}
     <div class="card-body register-card-body">
       <p class="login-box-msg">Nuevo usuario</p>
 
