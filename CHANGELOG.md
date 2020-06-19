@@ -1,14 +1,16 @@
-# Changelog : Current Version 0.16.0
+# Changelog : Current Version 0.1.19
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.0.19] 2020-06-19
+## [0.1.19] 2020-06-19
 ### Update
+- Fixed CHANGELOG.md file
 - Update many files
 - Progress in templates of dashboard module
 
+## [0.1.16] 2020-06-16
 ### Update
 - CHANGELOG.md
 
