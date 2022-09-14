@@ -262,7 +262,9 @@ def writeChapterDashboard(request,pk,chapter):
         if form.is_valid():
             f = form.save(commit=False)
             f.save()
-            return redirect('viewProjectDashboard',pk)
+            import time
+            time.sleep(2.5)
+            return redirect('writeChapterDashboard',pk,instance.pk)
         else:
             form = writeChapterForm(instance=instance)
             data = {         
