@@ -19,10 +19,11 @@ def get_item(dictionary, key):
 @login_required(login_url='loginDashboard')
 def indexDashboard(request):
 
-
+    list_project = Project.objects.filter(owner=request.user)
  
     count_users  = User.objects.filter().exclude(is_staff=True).count()
     data = {
+        "list_project":list_project,
         "count_users":count_users,
     }
     return render(request,'indexDashboard.html',data)
@@ -188,3 +189,91 @@ def viewUserDashboard(request,pk):
         "user":user,
     }
     return render(request,'viewUserDashboard.html',data)   
+
+
+@login_required(login_url='loginView')
+def createProjectDashboard(request):
+   
+    if request.POST:
+        form = createProjectForm(request.POST,request.FILES)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.owner = request.user
+            f.save()
+            return redirect('indexDashboard')
+        else:
+            form = createProjectForm()
+            data = {         
+               
+                "form":form,
+            }
+            return render(request,"createProjectDashboard.html",data)
+    else:
+        form = createProjectForm()
+        data = {
+            
+            "form":form,
+        }
+        return render(request,"createProjectDashboard.html",data)
+
+
+
+@login_required(login_url='loginView')
+def viewProjectDashboard(request,pk):
+    project = Project.objects.get(pk=pk)
+    list_chapters = Chapter.objects.filter(project=pk)
+    data = { 
+        "project":project,
+        "list_chapters":list_chapters,
+    }
+    return render(request,'viewProjectDashboard.html',data)   
+
+
+@login_required(login_url='loginView')
+def createChapterDashboard(request,pk):
+   
+    if request.POST:
+        form = createChapterForm(request.POST,request.FILES)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.project = Project.objects.get(pk=pk)
+            f.save()
+            return redirect('viewProjectDashboard',pk)
+        else:
+            form = createChapterForm()
+            data = {         
+               
+                "form":form,
+            }
+            return render(request,"createChapterDashboard.html",data)
+    else:
+        form = createChapterForm()
+        data = {
+            
+            "form":form,
+        }
+        return render(request,"createChapterDashboard.html",data)
+
+@login_required(login_url='loginView')
+def writeChapterDashboard(request,pk,chapter):
+    instance = Chapter.objects.get(pk=chapter)
+    if request.POST:
+        form = writeChapterForm(request.POST,request.FILES,instance=instance)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.save()
+            return redirect('viewProjectDashboard',pk)
+        else:
+            form = writeChapterForm(instance=instance)
+            data = {         
+               
+                "form":form,
+            }
+            return render(request,"writeChapterDashboard.html",data)
+    else:
+        form = writeChapterForm(instance=instance)
+        data = {
+            
+            "form":form,
+        }
+        return render(request,"writeChapterDashboard.html",data)

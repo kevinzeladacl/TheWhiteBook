@@ -22,6 +22,11 @@ urlpatterns = [
     path('users/update/<pk>', views.updateUserDashboard,name="updateUserDashboard"),
     path('users/delete/<pk>', views.deleteUserDashboard,name="deleteUserDashboard"),
  
+    #MODULE PROJECT
+    path('project/create', views.createProjectDashboard,name="createProjectDashboard"),
+    path('project/view/<pk>', views.viewProjectDashboard,name="viewProjectDashboard"),
+    path('project/view/<pk>/chapter/create', views.createChapterDashboard,name="createChapterDashboard"),
+    path('project/view/<pk>/chapter/edit/<chapter>', views.writeChapterDashboard,name="writeChapterDashboard"),
 
 
 ]

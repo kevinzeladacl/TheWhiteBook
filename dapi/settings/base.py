@@ -39,17 +39,24 @@ DJANGO_APPS = (
 PROJECT_APPS = (
     'apps.users',
     'apps.dashboard',
-    'apps.api',
+    # 'apps.api',
     'apps.drp',
     'apps.projects',
     'apps.website',
 )
 
+
 THIRD_PARTY_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'django_quill',
+
 )
+
+
+
+
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
@@ -130,3 +137,23 @@ MEDIA_ROOT = BASE_DIR.child('media')
 
 
 
+QUILL_CONFIGS = {
+    'default':{
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [
+                    {'font': []},
+                    {'header': []},
+                    {'align': []},
+                    'bold', 'italic', 'underline', 'strike', 'blockquote',
+                    {'color': []},
+                    {'background': []},
+                ],
+
+                ['clean'],
+            ]
+        }
+    }
+}

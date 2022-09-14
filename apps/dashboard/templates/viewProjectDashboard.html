@@ -1,0 +1,79 @@
+{% extends "baseDashboard.html" %}
+{% load static %} 
+{% block titlepage %}
+    Panel Dashboard
+{% endblock titlepage %}
+{% block breadcrumpage %}
+    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'indexDashboard' %}">Dashboard</a></li>    
+{% endblock breadcrumpage %}
+{% block name_page %}
+              Proyecto: {{project.name}}
+{% endblock name_page %}
+{% block bodycontent %}
+  
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-body">
+            <div class="callout callout-danger">
+                <p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire
+                soul,
+                like these sweet mornings of spring which I enjoy with my whole heart.</p>
+            </div>
+        </div>
+    </div>
+   
+</div>
+ 
+
+ 
+
+<div class="col-md-12">
+    <div class="card card-default">
+        
+       <div class="card-header">
+          <h3 class="card-title">
+             <i class="fas fa-bullhorn"></i>
+             Lista de Chapters
+             <a href="{% url 'createChapterDashboard' project.pk %}">
+                <button class="btn btn-success"><i class="fa fa-plus"></i> Crear Capítulo</button>    
+            </a>
+          </h3>
+         
+       </div>
+       
+       <div class="card-body col-md-12"> 
+        {% for chapter in list_chapters  %}
+            
+                <div class="callout callout-danger">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img class="chapter-img" src="https://media.istockphoto.com/vectors/chapter-section-vector-id1212671525?k=20&m=1212671525&s=612x612&w=0&h=l2Ex7JQBOCKldG54Zj6OO5vb6cPqEG3J4DhNIhgsjIs=">
+                        </div>
+                        <div class="col-md-7">
+                            <h5>{{chapter.name}}</h5>
+                            <p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire
+                                soul,
+                                like these sweet mornings of spring which I enjoy with my whole heart.
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'writeChapterDashboard' chapter.project.pk chapter.pk %}">
+                                <button class="btn btn-success"><i class="fa fa-plus"></i> Editar Capitulo</button>    
+                            </a>
+                            <a href="{% url 'createChapterDashboard' project.pk %}">
+                                <button class="btn btn-success"><i class="fa fa-plus"></i> Editar Info</button>    
+                            </a>
+          
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} 
+        </div>
+         
+    </div>
+ </div>
+ </div>
+           
+{% endblock bodycontent %}

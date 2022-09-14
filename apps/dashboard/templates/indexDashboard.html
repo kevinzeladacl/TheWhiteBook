@@ -1,13 +1,62 @@
 {% extends "baseDashboard.html" %}
-{% load staticfiles %} 
+{% load static %} 
 {% block titlepage %}
     Panel Dashboard
 {% endblock titlepage %}
 {% block breadcrumpage %}
     <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'indexDashboard' %}">Dashboard</a></li>    
 {% endblock breadcrumpage %}
+{% block name_page %}
+              Dashboard Principal
+{% endblock name_page %}
 {% block bodycontent %}
   
-          
+
+
+<div class="row">
+    <div class="col-md-8">
+      <input class="form-control input-lg search-project" type="text" placeholder="Busca por el nombre de tu proyecto">
+    </div>
+    <div class="col-md-4">
+        <a href="{% url 'createProjectDashboard' %}"> <button class="btn btn-success"> Crear Projecto </button></a>
+    </div>    
+</div>
+<br>
+
+
+  
+  <!-- Default box -->
+  <div class="row">
+
+    {% for project in list_project  %}
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+            <h3 class="card-title title-project">{{project.name}}</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i></button>
+            </div>
+            </div>
+            <a href="{% url 'viewProjectDashboard' project.pk %}">
+                <div class="card-body">
+                    <img src="https://i.pinimg.com/originals/3a/3e/3f/3a3e3f1e3ae5fdd7268033808f3f3777.jpg" alt="" width="100%">
+                </div>
+            </a>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            Última Actualización: Hace 3 días
+            </div>
+            <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+    </div>
+    {% endfor %}
+ 
+</div>
+
+      
            
 {% endblock bodycontent %}

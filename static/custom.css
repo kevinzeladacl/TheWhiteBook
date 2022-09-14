@@ -13,3 +13,29 @@
 .search-project{
 	font-size: 24px;
 }
+
+.title-project{
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.chapter-img{
+	height: 100px;
+	width: 100px;
+}
+
+.zoom-0 {
+    zoom: 1;
+}
+.zoom-1 {
+    zoom: 1.5;
+}
+.zoom-2 {
+    zoom: 1.8;
+}
+.zoom-3 {
+    zoom: 2.0;
+}
+.zoom-4 {
+    zoom: 2.2;
+}

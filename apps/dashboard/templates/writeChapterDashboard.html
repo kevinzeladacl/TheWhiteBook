@@ -1,0 +1,38 @@
+{% extends "baseDashboard.html" %}
+{% load static %} 
+{% block titlepage %}
+    Panel Dashboard
+{% endblock titlepage %}
+{% block breadcrumpage %}
+    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'indexDashboard' %}">Dashboard</a></li>    
+{% endblock breadcrumpage %}
+{% block name_page %}
+              Crear Chapter
+{% endblock name_page %}
+{% block bodycontent %}
+  
+
+
+<div class="col-md-6z">
+
+    <div class="card">
+        <div class="card-header">
+            <button class="btn btn-success" id="zoomIn" ><i class="fa fa-search-plus"></i> Agrandar Editor</button>
+            <button class="btn btn-success" id="zoomOut"><i class="fa fa-search-minus"></i> Reducir Editor</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <form action="" method="POST" class="" id="form-editor">{% csrf_token %}
+            {{form.body}}
+            <br>
+            <button class="btn btn-success"><i class="fa fa-plus"></i> Guardar Chapter</button>
+        </form>
+    </div>
+    
+</div> 
+
+
+           
+{% endblock bodycontent %}
+
+ 

@@ -1,6 +1,6 @@
 from django import forms
 from apps.users.models import *
-
+from apps.projects.models import *
 
 class LoginForm(forms.Form):
     email = forms.CharField(max_length=30,
@@ -59,3 +59,42 @@ class updateUserForm(forms.ModelForm):
             }),
  
         }
+
+
+
+class createProjectForm(forms.ModelForm):
+
+    class Meta:
+        model = Project
+        fields = ('name',)
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Nombre del proyecto...'
+            }),
+     
+        }
+
+class createChapterForm(forms.ModelForm):
+    
+    class Meta:
+        model = Chapter
+        fields = ('name',)
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Nombre del proyecto...'
+            }),
+     
+        }
+
+
+
+class writeChapterForm(forms.ModelForm):
+    
+    class Meta:
+        model = Chapter
+        fields = ('body',)
+ 
