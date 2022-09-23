@@ -1,0 +1,67 @@
+{% extends "baseDashboard.html" %}
+{% load static %} 
+{% block titlepage %}
+    Panel Dashboard
+{% endblock titlepage %}
+{% block breadcrumpage %}
+    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'indexDashboard' %}">Dashboard</a></li>    
+{% endblock breadcrumpage %}
+{% block name_page %}
+              Proyecto: {{project.name}} 
+              
+{% endblock name_page %}
+{% block bodycontent %}
+  
+
+
+ 
+ 
+ 
+ 
+
+
+<div class="col-md-12">
+    <div class="card card-default">
+        
+       <div class="card-header">
+          <h3 class="card-title">
+             <i class="fas fa-bullhorn"></i>
+             Lista de Personajes 
+            
+            <a href="{% url 'createCharacterDashboard' project.pk %}">
+                <button class="btn btn-success"><i class="fa fa-plus"></i> Crear Personaje</button>    
+            </a>
+          </h3>
+         
+       </div>
+       
+       <div class="card-body col-md-12"> 
+        {% for character in list_characters  %}
+            
+                <div class="callout callout-danger">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img class="chapter-img" src="https://media.istockphoto.com/vectors/chapter-section-vector-id1212671525?k=20&m=1212671525&s=612x612&w=0&h=l2Ex7JQBOCKldG54Zj6OO5vb6cPqEG3J4DhNIhgsjIs=">
+                        </div>
+                        <div class="col-md-7">
+                            <h5>{{character.name}}</h5>
+                            <p>{{character.description}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'updateCharacterDashboard' character.project.pk character.pk %}">
+                                <button class="btn btn-success"><i class="fa fa-pencil-square-o"></i> Editar Personsaje</button>    
+                            </a>
+                            
+          
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} 
+        </div>
+         
+    </div>
+ </div>
+ </div>
+           
+{% endblock bodycontent %}

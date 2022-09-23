@@ -1,0 +1,56 @@
+{% extends "baseDashboard.html" %}
+{% load static %} 
+{% block titlepage %}
+    Panel Dashboard
+{% endblock titlepage %}
+{% block breadcrumpage %}
+    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'indexDashboard' %}">Dashboard</a></li>    
+{% endblock breadcrumpage %}
+{% block name_page %}
+              Escribiendo en: {{chapter.name}}
+{% endblock name_page %}
+{% block bodycontent %}
+  
+<div class="row">
+
+  
+    <div class="col-md-4">
+        
+            <div class="card">
+                <div class="card-header">
+                    <form action="" method="POST">{% csrf_token %}
+                        <p>
+                        <button class="btn btn-success" id="zoomIn" name="new_note"><i class="fa fa-plus"></i> Crear Nota</button>
+                        </p>
+                    <p>
+                    {{form_note.body}}
+                    </p>
+                    </form>
+                </div>
+            </div>
+    
+    
+            {% for note in notes  %}
+                
+            <div class="card">
+                <div class="card-header">
+                    <a href="{% url 'deleteNoteChapterDashboard' note.pk %}">
+                        <button class="btn btn-danger" id="zoomIn" name="new_note"><i class="fa fa-trash"></i></button> 
+                    </a>
+                        
+                        {{note.body}}
+                    
+                </div>
+            </div>
+    
+            {% endfor %}
+            
+    </div>
+</div>
+
+
+
+           
+{% endblock bodycontent %}
+
+ 

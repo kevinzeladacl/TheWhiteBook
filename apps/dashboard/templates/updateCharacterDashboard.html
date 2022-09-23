@@ -1,0 +1,34 @@
+{% extends "baseDashboard.html" %}
+{% load static %} 
+{% block titlepage %}
+    Panel Dashboard
+{% endblock titlepage %}
+{% block breadcrumpage %}
+    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'indexDashboard' %}">Dashboard</a></li>    
+{% endblock breadcrumpage %}
+{% block name_page %}
+              Actualizar Personaje
+{% endblock name_page %}
+{% block bodycontent %}
+  
+
+
+<div class="col-md-6">
+
+    <div class="card card-success">
+    <div class="card-header">
+    <h3 class="card-title">Datos del Personaje</h3>
+    </div>
+    <div class="card-body">
+        <form method="POST">{% csrf_token %}
+            {{form.name}}
+            <br>
+            <button class="btn btn-success"><i class="fa fa-plus"></i> Actualizar Personaje</button>
+        </form>
+    </div>
+    
+    </div>
+
+      
+           
+{% endblock bodycontent %}

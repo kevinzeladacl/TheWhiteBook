@@ -216,7 +216,30 @@ def createProjectDashboard(request):
         }
         return render(request,"createProjectDashboard.html",data)
 
-
+@login_required(login_url='loginView')
+def updateProjectDashboard(request,pk):
+    instance = Project.objects.get(pk=pk)
+    if request.POST:
+        form = updateProjectForm(request.POST,request.FILES,instance=instance)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.owner = request.user
+            f.save()
+            return redirect('indexDashboard')
+        else:
+            form = updateProjectForm(instance=instance)
+            data = {         
+               
+                "form":form,
+            }
+            return render(request,"updateProjectDashboard.html",data)
+    else:
+        form = updateProjectForm(instance=instance)
+        data = {
+            
+            "form":form,
+        }
+        return render(request,"updateProjectDashboard.html",data)
 
 @login_required(login_url='loginView')
 def viewProjectDashboard(request,pk):
@@ -254,9 +277,35 @@ def createChapterDashboard(request,pk):
         }
         return render(request,"createChapterDashboard.html",data)
 
+
+@login_required(login_url='loginView')
+def updateChapterDashboard(request,pk,chapter):
+    instance = Chapter.objects.get(pk=chapter)
+    if request.POST:
+        form = updateChapterForm(request.POST,request.FILES,instance=instance)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.save()
+            return redirect('viewProjectDashboard',pk)
+        else:
+            form = updateChapterForm(instance=instance)
+            data = {         
+               
+                "form":form,
+            }
+            return render(request,"updateChapterDashboard.html",data)
+    else:
+        form = updateChapterForm(instance=instance)
+        data = {
+            
+            "form":form,
+        }
+        return render(request,"updateChapterDashboard.html",data)
+
 @login_required(login_url='loginView')
 def writeChapterDashboard(request,pk,chapter):
     instance = Chapter.objects.get(pk=chapter)
+    notes = NotesChapter.objects.filter(chapter=chapter)
     if request.POST:
         form = writeChapterForm(request.POST,request.FILES,instance=instance)
         if form.is_valid():
@@ -267,15 +316,125 @@ def writeChapterDashboard(request,pk,chapter):
             return redirect('writeChapterDashboard',pk,instance.pk)
         else:
             form = writeChapterForm(instance=instance)
+            form_note = createNotesForm()
             data = {         
-               
+            
                 "form":form,
+                "form_note":form_note,
+                "chapter":instance,
+                "notes":notes,
             }
             return render(request,"writeChapterDashboard.html",data)
     else:
         form = writeChapterForm(instance=instance)
+        form_note = createNotesForm()
+        data = {
+            
+            "form":form,
+            "form_note":form_note,
+            "chapter":instance,
+            "notes":notes,
+        }
+        return render(request,"writeChapterDashboard.html",data)
+
+@login_required(login_url='loginView')
+def writeNoteChapterDashboard(request,pk,chapter):
+    instance = Chapter.objects.get(pk=chapter)
+    notes = NotesChapter.objects.filter(chapter=chapter)
+    if request.POST:
+        form_note = createNotesForm(request.POST,request.FILES)
+        if form_note.is_valid():
+            f = form_note.save(commit=False)
+            f.chapter = instance
+            f.save()
+            return redirect('writeChapterDashboard',pk,instance.pk)
+        else:
+            
+            form_note = createNotesForm()
+            data = {         
+                
+                "form_note":form_note,
+                "chapter":instance,
+                "notes":notes,
+            }
+            return render(request,"writeNoteChapterDashboard.html",data)
+    else:
+        
+        form_note = createNotesForm()
+        data = {
+            
+            "form_note":form_note,
+            "chapter":instance,
+            "notes":notes,
+        }
+        return render(request,"writeNoteChapterDashboard.html",data)
+
+
+login_required(login_url='loginView')
+def deleteNoteChapterDashboard(request,note):
+    project = NotesChapter.objects.get(pk=note).chapter.project.pk
+    chapter = NotesChapter.objects.get(pk=note).chapter.pk
+    note_to_delete = NotesChapter.objects.get(pk=note).pk
+    NotesChapter.objects.filter(pk=note_to_delete).delete()
+    return redirect('writeChapterDashboard',project,chapter)
+
+@login_required(login_url='loginView')
+def listCharacterDashboard(request,pk):
+    project = Project.objects.get(pk=pk)
+    list_characters = Character.objects.filter(project=pk)
+    data = { 
+        "project":project,
+        "list_characters":list_characters,
+    }
+    return render(request,'listCharacterDashboard.html',data)   
+
+
+@login_required(login_url='loginView')
+def createCharacterDashboard(request,pk):
+    if request.POST:
+        form = createCharacterForm(request.POST,request.FILES)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.project = Project.objects.get(pk=pk)
+            f.save()
+            return redirect('listCharacterDashboard',pk)
+        else:
+            form = createCharacterForm()
+            data = {         
+               
+                "form":form,
+            }
+            return render(request,"createCharacterDashboard.html",data)
+    else:
+        form = createCharacterForm()
         data = {
             
             "form":form,
         }
-        return render(request,"writeChapterDashboard.html",data)
+        return render(request,"createCharacterDashboard.html",data)
+
+
+@login_required(login_url='loginView')
+def updateCharacterDashboard(request,pk,character):
+    instance = Character.objects.get(pk=character)
+    if request.POST:
+        form = updateCharacterForm(request.POST,request.FILES,instance=instance)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.project = Project.objects.get(pk=pk)
+            f.save()
+            return redirect('listCharacterDashboard',pk)
+        else:
+            form = updateCharacterForm(instance=instance)
+            data = {         
+               
+                "form":form,
+            }
+            return render(request,"updateCharacterDashboard.html",data)
+    else:
+        form = updateCharacterForm(instance=instance)
+        data = {
+            
+            "form":form,
+        }
+        return render(request,"updateCharacterDashboard.html",data)

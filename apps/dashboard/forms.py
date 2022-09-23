@@ -66,31 +66,89 @@ class createProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
-        fields = ('name',)
+        fields = ('name','description')
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control form-control-lg',
                 'required': 'true',
                 'placeholder': 'Nombre del proyecto...'
             }),
+            'description': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Descripción del proyecto...'
+            }),
      
         }
+
+
+class updateProjectForm(forms.ModelForm):
+    
+    class Meta:
+        model = Project
+        fields = ('name','description','resume')
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Nombre del proyecto...'
+            }),
+            'description': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                # 'required': 'true',
+                'placeholder': 'Descripción del proyecto...'
+            }),
+            'resume': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                # 'required': 'true',
+                'placeholder': 'Resumen del proyecto...'
+            }),
+     
+        }
+
 
 class createChapterForm(forms.ModelForm):
     
     class Meta:
         model = Chapter
-        fields = ('name',)
+        fields = ('name','description',)
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control form-control-lg',
                 'required': 'true',
-                'placeholder': 'Nombre del proyecto...'
+                'placeholder': 'Nombre del capítulo...'
+            }),
+              'description': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Decripción del capítulo...'
             }),
      
         }
 
-
+class updateChapterForm(forms.ModelForm):
+    
+    class Meta:
+        model = Chapter
+        fields = ('name','description','status')
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Nombre del capítulo...'
+            }),
+              'description': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Decripción del capítulo...'
+            }),
+               'status': forms.Select(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Estado del capítulo...'
+            }),
+     
+        }
 
 class writeChapterForm(forms.ModelForm):
     
@@ -98,3 +156,59 @@ class writeChapterForm(forms.ModelForm):
         model = Chapter
         fields = ('body',)
  
+class createNotesForm(forms.ModelForm):
+        
+    class Meta:
+        model = NotesChapter
+        fields = ('body',)
+        widgets = {
+            'body': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'placeholder': 'Nota...'
+            }),
+         
+     
+        }
+class updateNotesForm(forms.ModelForm):
+        
+    class Meta:
+        model = NotesChapter
+        fields = ('body',)
+        widgets = {
+            'body': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+
+                'placeholder': 'Nota...'
+            }),
+         
+     
+        }
+class createCharacterForm(forms.ModelForm):
+        
+    class Meta:
+        model = Character
+        fields = ('name',)
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Nombre del personaje...'
+            }),
+         
+     
+        }
+
+class updateCharacterForm(forms.ModelForm):
+        
+    class Meta:
+        model = Character
+        fields = ('name',)
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'required': 'true',
+                'placeholder': 'Nombre del personaje...'
+            }),
+         
+     
+        }

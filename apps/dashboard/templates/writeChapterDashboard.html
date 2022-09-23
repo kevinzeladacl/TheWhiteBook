@@ -7,31 +7,57 @@
     <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'indexDashboard' %}">Dashboard</a></li>    
 {% endblock breadcrumpage %}
 {% block name_page %}
-              Crear Chapter
+              Escribiendo en: {{chapter.name}}
 {% endblock name_page %}
 {% block bodycontent %}
   
+<div class="row">
 
+    <div class="col-md-8">
 
-<div class="col-md-6z">
-
-    <div class="card">
-        <div class="card-header">
-            <button class="btn btn-success" id="zoomIn" ><i class="fa fa-search-plus"></i> Agrandar Editor</button>
-            <button class="btn btn-success" id="zoomOut"><i class="fa fa-search-minus"></i> Reducir Editor</button>
-        </div>
-    </div>
-    <div class="card-body">
-        <form action="" method="POST" class="" >{% csrf_token %}
-            <div id="form-editor">
-            {{form.body}}
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-success" id="zoomIn" ><i class="fa fa-search-plus"></i> Agrandar Editor</button>
+                <button class="btn btn-success" id="zoomOut"><i class="fa fa-search-minus"></i> Reducir Editor</button>
             </div>
+        </div>
+        <div class="card-body">
+            <form action="" method="POST" class="" >{% csrf_token %}
+                <div id="form-editor">
+                {{form.body}}
+                </div>
 
-            <button class="btn btn-success btn-flotante swalDefaultSuccess" style=""><i class="fa fa-plus"></i> Guardar Chapter</button>
-        </form>
-    </div>
+                <button class="btn btn-success btn-flotante swalDefaultSuccess" style=""><i class="fa fa-plus"></i> Guardar</button>
+            </form>
+        </div>
+        
+    </div> 
+    <div class="col-md-4">
+        
+        
+        <div class="card">
+            <div class="card-header">
+                <a href="{% url 'writeNoteChapterDashboard' chapter.project.pk chapter.pk %}">
+                <button class="btn btn-success" id="zoomIn" name="new_note"><i class="fa fa-plus"></i> Crear/Elminar Notas</button>
+                </a>
+            </div>
+        </div>
     
-</div> 
+            {% for note in notes  %}
+                
+            <div class="card">
+                <div class="card-header">
+                  
+                        {{note.body}}
+                    
+                </div>
+            </div>
+    
+            {% endfor %}
+            
+    </div>
+</div>
+
 
 
            

@@ -1,0 +1,36 @@
+{% extends "baseDashboard.html" %}
+{% load static %} 
+{% block titlepage %}
+    Panel Dashboard
+{% endblock titlepage %}
+{% block breadcrumpage %}
+    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'indexDashboard' %}">Dashboard</a></li>    
+{% endblock breadcrumpage %}
+{% block name_page %}
+              Actualizar Proyecto
+{% endblock name_page %}
+{% block bodycontent %}
+  
+
+
+<div class="col-md-6">
+
+    <div class="card card-success">
+    <div class="card-header">
+    <h3 class="card-title">Datos del proyecto</h3>
+    </div>
+    <div class="card-body">
+        <form method="POST">{% csrf_token %}
+            <p>{{form.name}}</p>
+            <p>{{form.description}}</p>
+            <p>{{form.resume}}</p>
+            <br>
+            <button class="btn btn-success"><i class="fa fa-plus"></i> Actualizar Proyecto</button>
+        </form>
+    </div>
+    
+    </div>
+
+      
+           
+{% endblock bodycontent %}
